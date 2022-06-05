@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
+import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 
 import { MyTheme, getFillGradient } from './theming';
 
@@ -14,7 +15,7 @@ interface CreateChart {
 export function createChart({ id, data, titleText, yNumberFormatting }: CreateChart) {
   const root = am5.Root.new(id);
 
-  root.setThemes([MyTheme.new(root)]);
+  root.setThemes([am5themes_Animated.new(root), MyTheme.new(root)]);
 
   const chart = root.container.children.push(
     am5xy.XYChart.new(root, {

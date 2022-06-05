@@ -1,7 +1,6 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = function (env, { mode }) {
@@ -57,8 +56,9 @@ module.exports = function (env, { mode }) {
     plugins: [
       new ESLintPlugin(),
       new HtmlWebpackPlugin({
-        template: './public/index.html',
         publicPath: '/',
+        template: './public/index.html',
+        favicon: './public/favicon.ico',
         minify: mode === 'production' && {
           removeComments: true,
           collapseWhitespace: true,

@@ -35,10 +35,11 @@ export const getTvl = (data: Data, asset: string) => {
   if (!filteredData) return [];
 
   const [farm] = filteredData.selected_farm;
-  console.log(farm);
+
+  const { tvlStaked } = farm;
 
   return farm.tvlStakedHistory.map((point: Point) => ({
     date: new Date(point.date).getTime(),
-    value: point.value,
+    value: tvlStaked / point.value,
   }));
 };
